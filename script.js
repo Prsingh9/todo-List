@@ -55,9 +55,18 @@ function DisplayInfo(tasksToShow) {
   recordsDisplay.innerHTML = statement;
 }
 
-//
+function EditInfo(id) {
 
-//
+  edit_id = id;
+  //
+  tasknameTextField.value = taskArray[id].task; 
+  addTaskBtn.innerText = "Save Changes";
+}
+function DeleteInfo(id) {
+  taskArray.splice(id, 1); 
+  SaveInfo(taskArray);
+  DisplayInfo(); 
+}
 
 function MarkCompleted(id) {
   taskArray[id].completed = true; 
