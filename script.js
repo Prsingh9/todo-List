@@ -12,9 +12,23 @@ if (objStr != null) {
 }
 
 DisplayInfo(); 
+addTaskBtn.onclick = () => {
+  const task = tasknameTextField.value;
 
-//
+  if (task !== "") {
+    if (edit_id != null) {
+      taskArray.splice(edit_id, 1, { task: task }); 
+      edit_id = null; 
+      addTaskBtn.innerText = btnText;
+    } else {
+      taskArray.push({ task: task }); 
+    }
+  }
 
+  SaveInfo(taskArray); 
+  tasknameTextField.value = "";
+  DisplayInfo(); 
+};
 function SaveInfo(taskArray) {
   let str = JSON.stringify(taskArray);
   localStorage.setItem("tasks", str); 
